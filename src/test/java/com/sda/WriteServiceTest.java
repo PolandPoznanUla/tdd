@@ -1,4 +1,4 @@
-package com.sda.service;
+package com.sda;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -65,5 +65,14 @@ public class WriteServiceTest {
         String actualValue = writeService.action(givenValue);
 
         Assert.assertEquals("Message not correct for multiple names", expectedValue, actualValue);
+    }
+
+    @Test
+    public void shouldReturnShoutMessageForGivenNamesInCapitalLetters() {
+        String givenValue = "JOHN, MARTIN, ELLA";
+        String expectedValue = "HELLO, JOHN, MARTIN and ELLA!";
+        String actualValue = writeService.action(givenValue);
+
+        Assert.assertEquals("Message not correct for multiple names in capital letters", expectedValue, actualValue);
     }
 }
