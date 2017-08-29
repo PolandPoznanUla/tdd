@@ -8,14 +8,21 @@ import org.junit.Assert;
  */
 public class MzStringUtilsTest {
 
-    public void shouldReturnValueWithUpperCases() {
+    public void shouldReturnFalseWithUpperCases() {
         String givenValue = "ALA MA KOTA";
         boolean result = MyStringUtils.isUpperCase(givenValue);
 
         Assert.assertTrue("Expected value contains lower cases", result);
     }
 
-    public void shouldReturnValueWithLowerCases() {
+    public void shouldReturnFalseWithLowerCases() {
+        String givenValue = "Ala ma kota";
+        boolean result = MyStringUtils.isUpperCase(givenValue);
+
+        Assert.assertFalse("Result is true", result);
+    }
+
+    public void shouldReturnFalseWithLowerCases() {
         String givenValue = "Ala ma kota";
         boolean result = MyStringUtils.isUpperCase(givenValue);
 

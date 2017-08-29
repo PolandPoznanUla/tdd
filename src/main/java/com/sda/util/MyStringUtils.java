@@ -1,32 +1,29 @@
 package com.sda.util;
 
-
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.text.StrBuilder;
 
-/**
- * Created by RENT on 2017-08-28.
- */
 public class MyStringUtils {
+
     public static boolean isUpperCase(String value) {
         return StringUtils.isNotBlank(value) && value.equals(value.toUpperCase());
     }
 
     public static boolean isArray(String value) {
-        return StringUtils.isNotBlank(value) && StringUtils.containsAny(value,",");
+        return StringUtils.isNotBlank(value) &&
+                StringUtils.contains(value, ",");
     }
 
     public static String convertToString(String[] array) {
-        StrBuilder strBuilder = new StrBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
-            strBuilder.append(array[i]);
-            if (isPenultimate(array, i)){
-                strBuilder.append(" and ");
+            stringBuilder.append(array[i]);
+            if (isPenultimate(array, i)) {
+                stringBuilder.append(" and ");
             } else if (!isLast(array, i)) {
-                strBuilder.append(", ");
+                stringBuilder.append(", ");
             }
         }
-        return strBuilder.toString();
+        return stringBuilder.toString();
     }
 
     private static boolean isPenultimate(String[] array, int i) {
@@ -36,6 +33,4 @@ public class MyStringUtils {
     private static boolean isLast(String[] array, int i) {
         return i == array.length - 1;
     }
-
 }
-
