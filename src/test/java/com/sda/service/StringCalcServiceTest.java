@@ -4,44 +4,39 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * Created by RENT on 2017-08-29.
- */
 public class StringCalcServiceTest {
 
+    private StringCalcService stringCalcService;
 
-     private StringCalcService stringCalcService;
-
-     @Before
-     public void init() {
-         stringCalcService = new StringCalcService();
-     }
-
+    @Before
+    public void init() {
+        stringCalcService = new StringCalcService();
+    }
 
     @Test
     public void shouldSumDigitsInGivenString() {
-        String value = "5;3";
-        int actualValue = StringCalcService.calc(value);
-        int expectedValue = 8;
+        String givenValue = "5;3";
+        int expected = 8;
+        int actualValue = stringCalcService.calc(givenValue);
 
-        Assert.assertEquals("Results are not the same", expectedValue, actualValue);
+        Assert.assertEquals("Numbers are not equal", expected, actualValue);
     }
 
     @Test
-    public void shouldSumNumbersForGivenStrin() {
-        String value = "23;333";
-        int actualValue = StringCalcService.calc(value);
-        int expectedValue = 356;
+    public void shouldSumNumbersForGivenString() {
+        String givenValue = "23;333";
+        int expected = 356;
+        int actualValue = stringCalcService.calc(givenValue);
 
-        Assert.assertEquals("Results are not the same", expectedValue, actualValue);
+        Assert.assertEquals("Numbers are not equal", expected, actualValue);
     }
 
     @Test
-    public void shouldSumManyNumbersInGivenStrin() {
-        String value = "22;32;2;6;8";
-        int actualValue = StringCalcService.calc(value);
-        int expectedValue = 70;
+    public void shouldSumManyNumbersInGivenString() {
+        String givenValue = "22;32;2;6;8";
+        int expected = 70;
+        int actualValue = stringCalcService.calc(givenValue);
 
-        Assert.assertEquals("Results are not the same", expectedValue, actualValue);
+        Assert.assertEquals("Numbers are not equal", expected, actualValue);
     }
 }
