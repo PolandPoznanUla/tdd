@@ -1,4 +1,4 @@
-package com.sda.cucumber;
+package com.sda.cucumber.writeservice;
 
 import com.sda.service.WriteService;
 import cucumber.api.PendingException;
@@ -39,5 +39,22 @@ public class WriteServiceSteps {
     @Then("^result for multiple names is correct$")
     public void result_for_multiple_names_is_correct() {
         Assert.assertEquals("Expected value should be different", "Hello, Szymon, Anna and Jan", writeService.action(givenName));
+    }
+
+    @When("^i pass name (.*)$")
+    public void i_pass_name_$name(String name) {
+        givenName = name;
+    }
+
+    @Then("^result for defined name (.*) is correct$")
+    public void result_for_name_$name_is_correct(String name) {
+        Assert.assertEquals("Expected value should be different",
+                "Hello, " + name, writeService.action(givenName));
+    }
+
+    @Then("^result for name (.*) is (.*)$")
+    public void result_for_name_$name_is_$expectedResult(String name, String expectedResult) {
+        Assert.assertEquals("Expected value should be different", expectedResult,
+                writeService.action(name));
     }
 }
