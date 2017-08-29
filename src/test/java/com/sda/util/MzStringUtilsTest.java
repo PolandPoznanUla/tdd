@@ -21,11 +21,4 @@ public class MzStringUtilsTest {
 
         Assert.assertFalse("Result is true", result);
     }
-
-    public void shouldReturnFalseWithLowerCases() {
-        String givenValue = "Ala ma kota";
-        boolean result = MyStringUtils.isUpperCase(givenValue);
-
-        Assert.assertFalse("Result is true", result);
-    }
 }
