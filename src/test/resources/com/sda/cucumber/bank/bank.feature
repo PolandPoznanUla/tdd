@@ -1,17 +1,28 @@
 Feature: Bank Account
-    Scenario: Newly created user is visible in bank database
-    Given I create new bank
-    When I create new user
-        And I add user to bank
-    Then User is present in bank database
+         Scenario: Newly created user is visible in bank database
+         Given I create new bank
+         When I create new user
+             And I add user to bank
+         Then User is present in bank database
 
-    Scenario: I can create user and account, and then they are present in bank database
-    Given I create new bank
-    When I create new user
-        And I add user to bank
-        And I create new account
-        And I add user to account
-        And I add account to bank
-    Then User is present in bank database
-        And Account is present in bank database
-        And User is attached to account
+         Scenario: I can create user and account, and then they are present in bank database
+         Given I create new bank
+         When I create new user
+             And I add user to bank
+             And I create new account
+             And I add user to account
+             And I add account to bank
+         Then User is present in bank database
+             And Account is present in bank database
+             And User is attached to account
+
+
+        Scenario: I can list all accounts attached to given user
+            Given I create new bank
+            When I create new user with firstName Ula and lastName Radon and add it to bank
+                And I create new user with firstName Adam and lastName Mickiewicz and add it to bank
+                And I create new account for user 0 and add it to bank
+                And I create new account for user 0 and add it to bank
+                And I create new account for user 1 and add it to bank
+            Then User with id 0 is present in bank database
+                And User with id 0 has 2 accounts

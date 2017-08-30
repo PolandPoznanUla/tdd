@@ -2,6 +2,7 @@ package com.sda.bank;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by RENT on 2017-08-30.
@@ -19,6 +20,14 @@ public class Bank {
         this.accounts.add(account);
     }
 
+    public List<Account> getAccountsByUser(Integer userId) {
+        return this.accounts.stream()
+                .filter(e -> e.getOwnerId().equals(userId))
+                .collect(Collectors.toList());
+    }
+
+
+
     public Account getAccount(Integer id) {
        Account account = null;
         if (id < accounts.size() && id >=0) {
@@ -34,6 +43,7 @@ public class Bank {
         }
         return user;
     }
+
 
 
     public String getName() {
