@@ -51,6 +51,7 @@ public class StringCalcServiceSteps {
     public void sum_is_correct() {
         Assert.assertEquals("Sum are not same", expectedResult, stringCalcService.calc(value));
     }
+
 }
 
 
