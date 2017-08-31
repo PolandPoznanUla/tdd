@@ -11,6 +11,7 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 
 import javax.jws.soap.SOAPBinding;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -96,16 +97,26 @@ public class BankSteps {
         Assert.assertEquals("User with id " + id + "is not present in database", result);
     }
 
-    @And("^User with id (.*) has (.*) accounts$")
+    @And("^User with id (\\d+) has (.*) accounts$")
     public void user_with_id_$id_has_$number_accounts(Integer id, Integer expectedSize) {
         List<Account> accountsByUser = bank.getAccountsByUser(id);
         Assert.assertEquals("User should have: " + expectedSize + " accounts", expectedSize, Integer.valueOf(accountsByUser.size()));
     }
 
 
-    @And("^I add (.*) amount to account$")
+    @And("^I add (-?.*) amount to account$")
     public void i_add_$amount_to_account(Integer amount){
         bank.depositFor(amount, this.account.getId());
+    }
+
+    @And("^I add (-?.*) amount to account with (.*) id $")
+    public void i_add_$amount_to_account_with_$id(Integer amount, Integer id){
+        bank.depositFor(amount, id);
+    }
+
+    @And("^I list users sorted by balance$")
+    public void i_list_users_sorted_by_balance(){
+        Arrays.asList(new Account()).stream()
     }
 
     @Then("^ammount of money is visible in account$")

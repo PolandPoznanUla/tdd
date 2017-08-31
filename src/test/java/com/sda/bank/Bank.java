@@ -45,9 +45,12 @@ public class Bank {
             user = users.get(id);
         }
         return user;
+
     }
 
-
+    public List<User> getSortedUsersByBalance() {
+        return users;
+    }
 
     public String getName() {
         return name;
