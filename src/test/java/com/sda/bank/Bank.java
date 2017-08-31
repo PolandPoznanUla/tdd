@@ -26,7 +26,10 @@ public class Bank {
                 .collect(Collectors.toList());
     }
 
-
+    public void depositFor(Integer amount, Integer accountId) {
+        Account givenAccount =getAccount(accountId);
+        givenAccount.setBalance(givenAccount.getBalance() + amount);
+    }
 
     public Account getAccount(Integer id) {
        Account account = null;

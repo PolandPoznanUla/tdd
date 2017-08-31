@@ -26,3 +26,11 @@ Feature: Bank Account
                 And I create new account for user 1 and add it to bank
             Then User with id 0 is present in bank database
                 And User with id 0 has 2 accounts
+
+         Scenario: I can create deposit for account
+            Given I create new bank
+            When I create new account
+                And I add ammount of money to account
+                And I add account to bank
+            Then Account is present in bank
+                And ammount of money is visible in account
